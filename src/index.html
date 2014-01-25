@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Because: Science</title>
+        <meta charset="utf-8">
+        <style>
+            @import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700);
+            @import url(../css/gamejam.css);
+
+            body {
+                font-family: 'Lato';
+                background-color: #f0f0f0;
+                margin: 0px auto;
+            }
+
+            #overlay, #webgl {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                -o-transform : scaleX(-1);
+                -webkit-transform : scaleX(-1);
+                transform : scaleX(-1);
+                -ms-filter : fliph; /*IE*/
+                filter : fliph; /*IE*/
+            }
+
+            #videoel {
+                -o-transform : scaleX(-1);
+                -webkit-transform : scaleX(-1);
+                transform : scaleX(-1);
+                -ms-filter : fliph; /*IE*/
+                filter : fliph; /*IE*/
+            }
+
+            #filter {
+                display: none;
+            }
+
+            h2 {
+                font-weight : 400;
+            }
+
+            .masks {
+                display: none;
+            }
+
+        </style>
+
+    </head>
+    <body>
+        <div id="content">
+            <div id="container">
+                <div id="phaser" style="overflow: hidden;"></div>
+                <video id="videoel" width="640" height="480" preload="auto"></video>
+                <canvas id="overlay" width="640" height="480"></canvas>
+                <canvas id="webgl" width="640" height="480"></canvas>
+                <canvas id="webgl2" width="640" height="480" style="display: none;"></canvas>
+
+                <div class="story main">
+                    <select name="mask" id="selectmask">
+                        <option value="0"></option>
+                        <option value="1"></option>
+                        <option value="2"></option>
+                        <option value="3"></option>
+                        <option value="4"></option>
+                        <option value="5"></option>
+                        <option value="6"></option>
+                    </select>
+
+                    <h1>Because: Science</h1>
+                    <h2>Global Game Jam 2014 "game" by: <a href="http://www.twitter.com/antila">Anders Antila</a></h2>
+                    <p>Controls: None. You just use your web camera.</p>
+                    <!--
+
+                    -->
+
+                    <p>Go fullscreen with F11 or command+Shift+F.</p>
+
+                    <h2>^ Start the game by allowing your web camera to be used.</h2>
+
+                    <button id="me" class="me">More by me</button>
+                    <button id="about" class="about">About</button>
+                </div>
+
+                <div class="story about">
+                    <h3 class="theme">"We don't see things as they are, we see them as we are."</h3>
+                    <p>This game have these optional diversifiers:</p>
+                    <ul>
+                    <li>Hackontroller - The game must use a custom controller invented by the team, or use an existing controller in unconventional manner.</li>
+                    <li>Honor Aaron Swartz - The game only uses materials found in the public domain.</li>
+
+                    </ul>
+                    <p>I'm not sure a webcamera controler is unconventional enough to qualify. Honoring Aaron was en easy choice as he's an inspiration to myself and many others, having worked to librate academic works from their paywalls.</p>
+
+                    <p>Special thanks goes to <a href="http://www.tekniskamuseet.se/">Tekniska Museet</a> for hosting us, and <a href="http://ggjsthlm.wordpress.com/">all the arrangers</a> for putting it together.</p>
+
+                    <p>It has been an inspiring event seeing all these inspired people working hard to make something great. Unfortunately I won't be able to attend on Sunday.</p>
+
+                    Uses the <a href="https://github.com/auduno/clmtrackr">CLMTracker</a> library for face detection. Canvas rendering by <a href="http://phaser.io/">Phaser</a>.
+
+                    <button id="me" class="me">More by me</button>
+                    <button id="back" class="back">Back</button>
+                </div>
+                <div class="story me">
+                    <p>Is this a game? Maybe not, but I had fun making it.</p>
+                    <p>Here's some more stuff I've done during Jams.</p>
+                    <p><a href="https://dl.dropboxusercontent.com/u/894022/zero-hour-game-jam/index.html">BUTTKICKATRON 2000</a>, made in literary zero hours for the <a href="http://0hgame.eu/">zero hour game jam</a>: make a game between 2am and 2am during the DST time switch.</p>
+
+                    <p><a href="http://www.ludumdare.com/compo/ludum-dare-28/?action=preview&uid=27189">Monkey Rally</a> made with a team for the 28th <a href="http://www.ludumdare.com/">Ludum Dare</a>.</p>
+
+                    <p><a href="http://www.ludumdare.com/compo/minild-46/?action=preview&uid=27189">Misunderstood Shark</a>. Made for the SharkJam (Mini Ludum Dare #46)</p>
+
+                    <p>I'm also extremely proud of having had the opportuinty to consult for the industry. Check out my <a href="http://www.mobygames.com/developer/sheet/view/developerId,378719/">Moby Games page</a> too see what I've worked on that's not covered by an NDA.</p>
+                    <button id="back" class="back">Back</button>
+                </div>
+
+            </div>
+
+            <img id="mask" class="masks" src="./media/mask.png"></img>
+            <img id="monalisa" class="masks" src="./media/joconde_crop.jpg"></img>
+            <img id="monster" class="masks" src="./media/monster.png"></img>
+            <img id="mask" class="masks" src="./media/mask.png"></img>
+            <img id="obama4" class="masks" src="./media/obama4_crop.jpg"></img>
+            <img id="skull" class="masks" src="./media/skull.jpg"></img>
+        </div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="js/lib/poisson_new.js"></script>
+        <script src="js/lib/clmtrackr.min.js"></script>
+        <script src="js/lib/face_deformer.js"></script>
+        <script src="js/lib/phaser.js"></script>
+        <script src="js/lib/utils.js"></script>
+        <script src="assets/models/model_pca_20_svm.js"></script>
+        <script src="js/sub.js"></script>
+        <script src="js/phaser.js"></script>
+    </body>
+</html>
