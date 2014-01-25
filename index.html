@@ -1,79 +1,137 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Because: Science</title>
+        <meta charset="utf-8">
+        <style>
+            @import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700);
+            @import url(../css/gamejam.css);
 
-  <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Globalgamejam2014 : " />
+            body {
+                font-family: 'Lato';
+                background-color: #f0f0f0;
+                margin: 0px auto;
+            }
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+            #overlay, #webgl {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                -o-transform : scaleX(-1);
+                -webkit-transform : scaleX(-1);
+                transform : scaleX(-1);
+                -ms-filter : fliph; /*IE*/
+                filter : fliph; /*IE*/
+            }
 
-    <title>Globalgamejam2014</title>
-  </head>
+            #videoel {
+                -o-transform : scaleX(-1);
+                -webkit-transform : scaleX(-1);
+                transform : scaleX(-1);
+                -ms-filter : fliph; /*IE*/
+                filter : fliph; /*IE*/
+            }
 
-  <body>
+            #filter {
+                display: none;
+            }
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/antila/globalgamejam2014">View on GitHub</a>
+            h2 {
+                font-weight : 400;
+            }
 
-          <h1 id="project_title">Globalgamejam2014</h1>
-          <h2 id="project_tagline"></h2>
+            .masks {
+                display: none;
+            }
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/antila/globalgamejam2014/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/antila/globalgamejam2014/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
+        </style>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+    </head>
+    <body>
+        <div id="content">
+            <div id="container">
+                <div id="phaser" style="overflow: hidden;"></div>
+                <video id="videoel" width="640" height="480" preload="auto"></video>
+                <canvas id="overlay" width="640" height="480"></canvas>
+                <canvas id="webgl" width="640" height="480"></canvas>
+                <canvas id="webgl2" width="640" height="480" style="display: none;"></canvas>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+                <div class="story main">
+                    <select name="mask" id="selectmask">
+                        <option value="0"></option>
+                        <option value="1"></option>
+                        <option value="2"></option>
+                        <option value="3"></option>
+                        <option value="4"></option>
+                        <option value="5"></option>
+                        <option value="6"></option>
+                    </select>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+                    <h1>Because: Science</h1>
+                    <h2>Global Game Jam 2014 "game" by: <a href="http://www.twitter.com/antila">Anders Antila</a></h2>
+                    <p>Controls: None. You just use your web camera.</p>
+                    <!--
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+                    -->
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+                    <p>Go fullscreen with F11 or command+Shift+F.</p>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+                    <h2>^ Start the game by allowing your web camera to be used.</h2>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+                    <button id="me" class="me">More by me</button>
+                    <button id="about" class="about">About</button>
+                </div>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+                <div class="story about">
+                    <h3 class="theme">"We don't see things as they are, we see them as we are."</h3>
+                    <p>This game have these optional diversifiers:</p>
+                    <ul>
+                    <li>Hackontroller - The game must use a custom controller invented by the team, or use an existing controller in unconventional manner.</li>
+                    <li>Honor Aaron Swartz - The game only uses materials found in the public domain.</li>
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+                    </ul>
+                    <p>I'm not sure a webcamera controler is unconventional enough to qualify. Honoring Aaron was en easy choice as he's an inspiration to myself and many others, having worked to librate academic works from their paywalls.</p>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+                    <p>Special thanks goes to <a href="http://www.tekniskamuseet.se/">Tekniska Museet</a> for hosting us, and <a href="http://ggjsthlm.wordpress.com/">all the arrangers</a> for putting it together.</p>
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+                    <p>It has been an inspiring event seeing all these inspired people working hard to make something great. Unfortunately I won't be able to attend on Sunday.</p>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-    </div>
+                    Uses the <a href="https://github.com/auduno/clmtrackr">CLMTracker</a> library for face detection. Canvas rendering by <a href="http://phaser.io/">Phaser</a>.
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Globalgamejam2014 maintained by <a href="https://github.com/antila">antila</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
+                    <button id="me" class="me">More by me</button>
+                    <button id="back" class="back">Back</button>
+                </div>
+                <div class="story me">
+                    <p>Is this a game? Maybe not, but I had fun making it.</p>
+                    <p>Here's some more stuff I've done during Jams.</p>
+                    <p><a href="https://dl.dropboxusercontent.com/u/894022/zero-hour-game-jam/index.html">BUTTKICKATRON 2000</a>, made in literary zero hours for the <a href="http://0hgame.eu/">zero hour game jam</a>: make a game between 2am and 2am during the DST time switch.</p>
 
-    
+                    <p><a href="http://www.ludumdare.com/compo/ludum-dare-28/?action=preview&uid=27189">Monkey Rally</a> made with a team for the 28th <a href="http://www.ludumdare.com/">Ludum Dare</a>.</p>
 
-  </body>
+                    <p><a href="http://www.ludumdare.com/compo/minild-46/?action=preview&uid=27189">Misunderstood Shark</a>. Made for the SharkJam (Mini Ludum Dare #46)</p>
+
+                    <p>I'm also extremely proud of having had the opportuinty to consult for the industry. Check out my <a href="http://www.mobygames.com/developer/sheet/view/developerId,378719/">Moby Games page</a> too see what I've worked on that's not covered by an NDA.</p>
+                    <button id="back" class="back">Back</button>
+                </div>
+
+            </div>
+
+            <img id="mask" class="masks" src="./media/mask.png"></img>
+            <img id="monalisa" class="masks" src="./media/joconde_crop.jpg"></img>
+            <img id="monster" class="masks" src="./media/monster.png"></img>
+            <img id="mask" class="masks" src="./media/mask.png"></img>
+            <img id="obama4" class="masks" src="./media/obama4_crop.jpg"></img>
+            <img id="skull" class="masks" src="./media/skull.jpg"></img>
+        </div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="js/lib/poisson_new.js"></script>
+        <script src="js/lib/clmtrackr.min.js"></script>
+        <script src="js/lib/face_deformer.js"></script>
+        <script src="js/lib/phaser.js"></script>
+        <script src="js/lib/utils.js"></script>
+        <script src="assets/models/model_pca_20_svm.js"></script>
+        <script src="js/sub.js"></script>
+        <script src="js/phaser.js"></script>
+    </body>
 </html>
