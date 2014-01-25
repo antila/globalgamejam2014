@@ -29,8 +29,8 @@ var currentMask = 1;
 var animationRequest;
 
 function preload() {
-    game.load.image('you', '../assets/you.png');
-    game.load.image('calibrating', '../assets/calibrating.png');
+    game.load.image('you', 'assets/you.png');
+    game.load.image('calibrating', 'assets/calibrating.png');
     game.stage.backgroundColor = 'rgba(0, 0, 0, 0)';
 }
 

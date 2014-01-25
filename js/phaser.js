@@ -16,13 +16,13 @@ var showGrid = true;
 var isMask = true;
 
 function preload() {
-    game.load.image('you', '../assets/you.png');
-    game.load.image('calibrating', '../assets/calibrating.png');
-    game.load.image('collider', '../assets/monkey.png');
-    // game.load.image('dot', '../assets/dot.png');
+    game.load.image('you', 'assets/you.png');
+    game.load.image('calibrating', 'assets/calibrating.png');
+    game.load.image('collider', 'assets/monkey.png');
+    // game.load.image('dot', 'assets/dot.png');
     game.stage.backgroundColor = 'rgba(0, 0, 0, 0)';
 
-    game.load.atlasJSONHash('candy', '../assets/candy.png', '../assets/candy.json');
+    game.load.atlasJSONHash('candy', 'assets/candy.png', 'assets/candy.json');
 
 }
 
